@@ -39,7 +39,7 @@ const posts = [
       },
       { type: "link", content: "#cwi" },
     ],
-    publishedAt: new Date("2022-06-13 20:00:00"),
+    publishedAt: new Date("2022-06-12 20:00:00"),
   },
 ];
 
@@ -53,6 +53,7 @@ function App() {
         <main>
           {posts.map((post) => (
             <Post
+              key={post.id}
               author={post.author}
               content={post.content}
               publishedAt={post.publishedAt}
