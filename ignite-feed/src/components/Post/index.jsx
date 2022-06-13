@@ -1,15 +1,14 @@
+import { Avatar } from "../Avatar";
 import { Comment } from "../Comment";
-import styles from "./Post.module.css";
+import styles from "./styles.module.css";
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img
-            className={styles.avatar}
-            src="https://github.com/felipebrenner.png"
-          />
+          <Avatar src="https://github.com/felipebrenner.png" />
+
           <div className={styles.authorInfo}>
             <strong>Felipe Brenner</strong>
             <span>React Developer</span>
