@@ -16,7 +16,7 @@ export function NewTask() {
       />
 
       <button type="submit" onClick={handleCreateNewTask}>
-        <strong>Criar</strong> <PlusCircle fontSize={20} />
+        <strong>Criar</strong> <PlusCircle size={20} />
       </button>
     </div>
   );

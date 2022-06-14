@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./styles.module.css";
 import { Task } from "../Task";
 import { NewTask } from "../NewTask";
+import { Info } from "../Info";
 
 interface Task {
   id: string;
@@ -17,7 +18,7 @@ export function TasksList() {
     {
       id: uuidv4(),
       title:
-        "Finalizar o desafio ToDo List da trilha de ReactJS de 2022 do Ignite",
+        "Finalizar o desafio ToDo List da trilha de ReactJS de 2022 do Ignite, finalizar o desafio ToDo List da trilha de ReactJS de 2022 do Ignite",
       isDone: false,
     },
     {
@@ -36,22 +37,11 @@ export function TasksList() {
     <main className={styles.container}>
       <NewTask />
 
-      <div className={styles.info}>
-        <div className={styles.created}>
-          <span>Tarefas criadas</span>
-          <div className={styles.counter}>5</div>
-        </div>
-        <div className={styles.done}>
-          <span>Concluídas</span>
-          <div className={styles.counter}>2 de 5</div>
-        </div>
-      </div>
+      <Info />
 
-      <div className={styles.taskList}>
-        {tasks.map((task) => (
-          <Task key={task.id} title={task.title} isDone={task.isDone} />
-        ))}
-      </div>
+      {tasks.map((task) => (
+        <Task key={task.id} title={task.title} isDone={task.isDone} />
+      ))}
     </main>
   );
 }
