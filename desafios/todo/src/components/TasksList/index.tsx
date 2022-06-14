@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import { Task } from "../Task";
 import { NewTask } from "../NewTask";
 import { Info } from "../Info";
+import { Empty } from "../Empty";
 
 interface Task {
   id: string;
@@ -39,9 +40,13 @@ export function TasksList() {
 
       <Info />
 
-      {tasks.map((task) => (
-        <Task key={task.id} title={task.title} isDone={task.isDone} />
-      ))}
+      {tasks.length > 0 ? (
+        tasks.map((task) => (
+          <Task key={task.id} title={task.title} isDone={task.isDone} />
+        ))
+      ) : (
+        <Empty />
+      )}
     </main>
   );
 }
