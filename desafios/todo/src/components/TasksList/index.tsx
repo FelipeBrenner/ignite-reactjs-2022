@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
+import Scrollbar from "react-perfect-scrollbar";
 
 import styles from "./styles.module.css";
 import { Task } from "../Task";
@@ -42,12 +43,14 @@ export function TasksList() {
     );
 
     setTasks(newTasks);
+    localStorage.setItem("@todo:tasks", JSON.stringify(newTasks));
   }
 
   function handleDeleteTask(id: string) {
     const newTasks = tasks.filter((task) => task.id !== id);
 
     setTasks(newTasks);
+    localStorage.setItem("@todo:tasks", JSON.stringify(newTasks));
   }
 
   const totalCreatedTasks = tasks.length;
@@ -66,14 +69,18 @@ export function TasksList() {
       />
 
       {tasks.length > 0 ? (
-        tasks.map((task) => (
-          <Task
-            key={task.id}
-            task={task}
-            onCheckTask={handleCheckTask}
-            onDeleteTask={handleDeleteTask}
-          />
-        ))
+        <Scrollbar options={{ suppressScrollX: true }}>
+          <div className={styles.taskList}>
+            {tasks.map((task) => (
+              <Task
+                key={task.id}
+                task={task}
+                onCheckTask={handleCheckTask}
+                onDeleteTask={handleDeleteTask}
+              />
+            ))}
+          </div>
+        </Scrollbar>
       ) : (
         <Empty />
       )}

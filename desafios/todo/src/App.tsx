@@ -1,6 +1,7 @@
 import { Header } from "./components/Header";
 import { TasksList } from "./components/TasksList";
 
+import "react-perfect-scrollbar/dist/css/styles.css";
 import "./global.css";
 
 function App() {
