@@ -1,15 +1,25 @@
 import { Check, Trash } from "phosphor-react";
+import { ITask } from "../../types";
 import styles from "./styles.module.css";
 
 interface TaskProps {
-  title: string;
-  isDone: boolean;
+  task: ITask;
+  onCheckTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
-export function Task({ title, isDone }: TaskProps) {
-  function handleCheckTask() {}
+export function Task({
+  task: { id, title, isDone },
+  onCheckTask,
+  onDeleteTask,
+}: TaskProps) {
+  function handleCheckTask() {
+    onCheckTask(id);
+  }
 
-  function handleDeleteTask() {}
+  function handleDeleteTask() {
+    onDeleteTask(id);
+  }
 
   return (
     <div className={styles.container}>
